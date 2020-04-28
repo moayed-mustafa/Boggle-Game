@@ -25,7 +25,7 @@ def root():
     if 'game_count' not in session:
         session["high_score"] = 0
         session["game_count"] = 0
-    return render_template("index.html", board=board)
+    return render_template("index.html", board=board,high_score= session["high_score"], game_count=session["game_count"] )
 
 
 # set up a route to handle the request for guessing a game!
