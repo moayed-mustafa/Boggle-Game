@@ -19,7 +19,6 @@ boggle_game = Boggle()
 @app.route('/')
 def root():
     """ initialize session and render main page """
-
     board = boggle_game.make_board()
     session['board'] = board
     if 'game_count' not in session:
@@ -30,22 +29,19 @@ def root():
 
 # set up a route to handle the request for guessing a game!
 @app.route('/check-word')
-def cehck_word():
-    board = session['board']
+def check_word():
+    # board = session['board']
     word = request.args["word"]
-    valid_word = boggle_game.check_valid_word(board, str(word))
+    valid_word = boggle_game.check_valid_word(session['board'], word)
     return jsonify({"result": valid_word})
 
-# set up a request for handling score and highest score.
+
 @app.route('/update-HighScore', methods=["POST"])
 def update_high_score():
-    # import pdb
-    # pdb.set_trace()
     score = request.json["score"]
     session["high_score"] = max(session["high_score"], score)
     session["game_count"] = session["game_count"]  + 1
     result = {"high_score": session["high_score"], "games_played": session["game_count"]}
     response = jsonify(result)
-    print(f"response: {response}")
     response.status_code = 201
     return response

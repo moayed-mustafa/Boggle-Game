@@ -4,11 +4,13 @@
 
 
 # Technologies:
-    - python Flask
+    -python Flask
     -Flask Jinja
     -unittest
     -Bootstrap
     -Vanilla JS
+    -axios
+    -coverage
 
 
 # The Game is made as an exercise for SpringBoard Software Engineering Track
