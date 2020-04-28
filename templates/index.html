@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block title %}  <title>Home | Boogle Game</title> {% endblock %}
+
+{% block content %}
+    <div class="row m-5">
+        <!-- board column -->
+        <div class="col-6 d-flex">
+            <!-- <h2 class=  mb-2'>Border</h2> -->
+            <div class=" row w-100 h-100 align-items-start">
+                <table class="table table-dark mt-3 ">
+                    <!-- loop here for table data -->
+                    <tbody>
+                        {% for row in board%}
+                            <tr class= 'text-center'>
+                                {% for data in row%}
+                                    <td class= 'border'>{{data}}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- the other components col -->
+        <div class="col-6">
+            <!-- form and timer -->
+            <div class="row mt-3">
+                <div class="col">
+                    <!-- Form -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"> Found a word?</h4>
+                            <form class="form-group" >
+                                <input type="text" class='form-control' id = "input" name = "word">
+                                <button class="btn btn-block btn-primary mt-2">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                                <!-- Timer -->
+                <div class="col text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"> Time Left</h4>
+                            <div class= 'container mt-0 '>
+                                <h1 id= "timer" >0</h1>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- score and words collection -->
+            <div class="row mt-3">
+                <!-- words guessed -->
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class= "list-group">
+                                <li class= "list-group-item">Word:       <span id = "word_guessed"></span></li>
+                                <li class= "list-group-item">Status:     <span id = "response"></span></li>
+                                <li class= "list-group-item">Words Found: <span id = "words"> </span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- score -->
+                <div class="col text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"> Score</h4>
+                            <div class= 'container mt-0 '>
+                                <h1 id= "score" >0</h1>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- High score and history  -->
+            <div class="row mt-3 text-center">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                                <ul class= "list-group">
+                                    <li class= "list-group-item">Games Played:</li>
+                                    <div class="conainer text-center m-2">
+                                        <h1 id = "games_played">0</h1>
+                                    </div>
+                                </ul>
+                            </div>
+                    </div>
+                </div>
+                        <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <ul class= "list-group">
+                                    <li class= "list-group-item">High Score:</li>
+                                    <div class="conainer text-center m-2">
+                                        <h1 id = "high_score">0</h1>
+                                    </div>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
